@@ -1,27 +1,19 @@
 import { Button, Input } from "antd";
 import { useNavigate } from 'react-router-dom';
-import { useState } from "react";
+import { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import styles from "./Header.module.scss";
+import { CharacterDataContext } from "../../contexts/CharacterDataContext/CharacterDataContext";
 
-interface HeaderProps {
-  setSearchFilter: (value: string | null) => void;
-}
-
-const Header: React.FC<HeaderProps> = ({ setSearchFilter }) => {
+const Header: React.FC = () => {
   const navigate = useNavigate();
-  const [searchValue, setSearchValue] = useState<string | null>(null);
   const { t } = useTranslation();
-
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    setSearchValue(value);
-    setSearchFilter(value);
-  };
 
   const logout = () => {
     navigate('/login');
   };
+
+  const { handleUpdateFilter, searchFilter } = useContext(CharacterDataContext);
 
   return (
     <nav className={styles.nav}>
@@ -30,8 +22,8 @@ const Header: React.FC<HeaderProps> = ({ setSearchFilter }) => {
         <Input
           type="text"
           placeholder={t('search')}
-          value={searchValue as string}
-          onChange={handleSearchChange}
+          value={searchFilter as string}
+          onChange={(e) => handleUpdateFilter('search', e.target.value)}
         />
         <Button type="default" className={styles.button} onClick={logout}>
           {t('logout')}

@@ -1,18 +1,16 @@
-import { useState } from "react";
 import CharacterList from "../../components/CharacterList/CharacterList";
 import Header from "../../components/Header/Header";
+import Filters from "../../components/Filters/Filters";
 
 const CharacterContent = () => {
 
-    const [searchFilter, setSearchFilter] = useState<string | null>(null);
-
-    return (
-        <>
-            <Header setSearchFilter={setSearchFilter} />
-            <CharacterList searchFilter={searchFilter} />
-        </>
-    );
-    
-}
+  return (
+    <>
+      <Header />
+      <Filters />
+      <CharacterList />
+    </>
+  );
+};
 
 export default CharacterContent;

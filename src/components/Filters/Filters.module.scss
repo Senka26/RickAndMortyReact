@@ -1,0 +1,24 @@
+.filters {
+    margin-top: 8vh;
+}
+
+.filterItem {
+    width: 50%;
+    margin: 0.5vh;
+}
+
+@media screen and (min-width: 1080px) {
+    .filterItem {
+        margin-top: 3vh;
+        width: 17%;
+        display: inline-block;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .filterItem {
+        margin-top: 1vh;
+        width: 17%;
+        display: inline-block;
+    }
+}
